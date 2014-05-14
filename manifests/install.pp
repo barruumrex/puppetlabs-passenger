@@ -7,9 +7,7 @@ class passenger::install {
   }
 
   if $passenger::package_dependencies {
-    package { $passenger::package_dependencies:
-      ensure => present,
-    }
+    include $passenger::package_dependencies
   }
 
 }
