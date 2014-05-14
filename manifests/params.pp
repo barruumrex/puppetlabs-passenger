@@ -66,3 +66,40 @@ class passenger::params {
     }
   }
 }
+
+class libopenssl-ruby {
+  if ! defined(Package['libopenssl-devel']) {
+    package {'libopenssl-devel': ensure=>installed}
+  }
+} 
+
+class libcurl4-openssl-dev {
+  if ! defined(Package['libcurl4-openssl-dev']) {
+    package {'libcurl4-openssl-dev': ensure=>installed}
+  }
+} 
+
+class libruby {
+  if ! defined(Package['libruby']) {
+    package {'libruby': ensure=>installed}
+  }
+} 
+     
+class libcurl-devel {
+  if ! defined(Package['libcurl-devel']) {
+    package {'libcurl-devel': ensure=>installed}
+  }
+} 
+
+class openssl-devel {
+  if ! defined(Package['openssl-devel']) {
+    package {'openssl-devel': ensure=>installed}
+  }
+} 
+
+class zlib-devel {
+  if ! defined(Package['zlib-devel']) {
+    package {'zlib-devel': ensure=>installed}
+  }
+} 
+
