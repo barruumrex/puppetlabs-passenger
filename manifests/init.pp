@@ -31,6 +31,18 @@
 #   [*include_build_tools*]
 #     Boolean to require gcc and make classes. Default is false.
 #
+#   [*high_performance_mode*]
+#     Boolean to set high performance mode. Default is true.
+#
+#   [*max_pool_size*]
+#     Set the maximum pool size for passenger
+#
+#   [*pool_idle_time*]
+#     Set the idle time for pools
+#
+#   [*stat_throttle_rate*]
+#     Set the stat throttle rate
+#
 # Usage:
 #
 #  class { 'passenger':
@@ -68,6 +80,10 @@ class passenger (
   $passenger_version      = $passenger::params::passenger_version,
   $compile_passenger      = $passenger::params::compile_passenger,
   $include_build_tools    = false,
+  $high_performance_mode  = $passenger::params::high_performance_mode,
+  $max_pool_size          = $passenger::params::max_pool_size,
+  $pool_idle_time         = $passenger::params::pool_idle_time,
+  $stat_throttle_rate     = $passenger::params::stat_throttle_rate,
 ) inherits passenger::params {
 
   include '::apache'

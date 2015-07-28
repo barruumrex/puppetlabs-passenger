@@ -2,17 +2,21 @@ PassengerRoot <%= scope.lookupvar('passenger::passenger_root') %>
 PassengerRuby <%= scope.lookupvar('passenger::passenger_ruby') %>
 
 # you probably want to tune these settings
-PassengerHighPerformance on
-PassengerMaxPoolSize 12
-PassengerPoolIdleTime 1500
-# PassengerMaxRequests 1000
-PassengerStatThrottleRate 120
+
 <%
+high_performance_mode = scope.lookupvar('passenger::high_performance_mode')
 major_version = scope.lookupvar('passenger::passenger_version').match(/^(\d+)\./)
 major_version = major_version[1] if major_version
 
-if major_version and major_version.to_i >= 4
+if high_performance_mode
 -%>
+PassengerHighPerformance on
+<% end -%>
+PassengerMaxPoolSize <%= scope.lookupvar('passenger::max_pool_size') %>
+PassengerPoolIdleTime <%= scope.lookupvar('passenger::pool_idle_time') %>
+PassengerStatThrottleRate <%= scope.lookupvar('passenger::stat_throttle_rate') %>
+
+<% if major_version and major_version.to_i >= 4 -%>
 PassengerEnabled on
 <% else -%>
 RailsAutoDetect On

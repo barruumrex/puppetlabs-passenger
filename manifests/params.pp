@@ -11,12 +11,17 @@
 # Sample Usage:
 #
 class passenger::params {
-  $package_ensure     = '3.0.21'
-  $passenger_version  = '3.0.21'
-  $passenger_ruby     = '/usr/bin/ruby'
-  $package_provider   = 'gem'
-  $passenger_provider = 'gem'
-  $compile_passenger  = true
+  $package_ensure         = '3.0.21'
+  $passenger_version      = '3.0.21'
+  $passenger_ruby         = '/usr/bin/ruby'
+  $package_provider       = 'gem'
+  $passenger_provider     = 'gem'
+  $compile_passenger      = true
+  $high_performance_mode  = true
+  $max_pool_size          = 12
+  $pool_idle_time         = 1500
+  $stat_throttle_rate     = 120
+  
 
   if versioncmp ($passenger_version, '4.0.0') > 0 {
     $builddir     = 'buildout'
